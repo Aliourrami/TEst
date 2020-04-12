@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gestion_clubCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Abonner">
+    <Key>
+      <PropertyRef Name="NumA" />
+    </Key>
+    <Property Name="DateD" Type="date" />
+    <Property Name="DateF" Type="date" />
+    <Property Name="CodeTAb" Type="int" />
+    <Property Name="NumA" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Activite">
+    <Key>
+      <PropertyRef Name="CodeAct" />
+    </Key>
+    <Property Name="CodeAct" Type="int" Nullable="false" />
+    <Property Name="LibelleAct" Type="varchar" MaxLength="20" />
+    <Property Name="CodeTAc" Type="int" />
+  </EntityType>
+  <EntityType Name="Adherent">
+    <Key>
+      <PropertyRef Name="NumA" />
+    </Key>
+    <Property Name="NumA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomA" Type="varchar" MaxLength="30" />
+    <Property Name="PrenomA" Type="varchar" MaxLength="30" />
+    <Property Name="DateN" Type="date" />
+    <Property Name="Sexe" Type="varchar" MaxLength="10" />
+    <Property Name="Adresse" Type="text" />
+    <Property Name="VilleA" Type="varchar" MaxLength="30" />
+    <Property Name="Tel" Type="varchar" MaxLength="10" />
+    <Property Name="NumEntr" Type="int" />
+    <Property Name="NumSl" Type="int" />
+  </EntityType>
+  <EntityType Name="Entraineur">
+    <Key>
+      <PropertyRef Name="NumE" />
+    </Key>
+    <Property Name="NumE" Type="int" Nullable="false" />
+    <Property Name="NomE" Type="varchar" MaxLength="30" />
+    <Property Name="PrenomE" Type="varchar" MaxLength="30" />
+    <Property Name="LibelleE" Type="varchar" MaxLength="50" />
+    <Property Name="Numsle" Type="int" />
+  </EntityType>
+  <EntityType Name="Login_">
+    <Key>
+      <PropertyRef Name="NumA" />
+    </Key>
+    <Property Name="NumA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="30" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Planifier">
+    <Key>
+      <PropertyRef Name="NumS" />
+      <PropertyRef Name="CodeAct" />
+    </Key>
+    <Property Name="DateP" Type="date" />
+    <Property Name="HeurD" Type="time" Precision="7" />
+    <Property Name="HeurF" Type="time" Precision="7" />
+    <Property Name="NumS" Type="int" Nullable="false" />
+    <Property Name="CodeAct" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Salle">
+    <Key>
+      <PropertyRef Name="NumS" />
+    </Key>
+    <Property Name="NumS" Type="int" Nullable="false" />
+    <Property Name="NomS" Type="varchar" MaxLength="30" />
+    <Property Name="AdresseS" Type="varchar" MaxLength="50" />
+    <Property Name="VilleS" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Type_abonnement">
+    <Key>
+      <PropertyRef Name="CodeTAb" />
+    </Key>
+    <Property Name="CodeTAb" Type="int" Nullable="false" />
+    <Property Name="LibelleTAb" Type="varchar" MaxLength="30" />
+    <Property Name="DescTAb" Type="text" />
+    <Property Name="TarifTAb" Type="money" />
+    <Property Name="DureeTAb" Type="int" />
+  </EntityType>
+  <EntityType Name="Type_Activite">
+    <Key>
+      <PropertyRef Name="CodeTAc" />
+    </Key>
+    <Property Name="CodeTAc" Type="int" Nullable="false" />
+    <Property Name="LibelleTAc" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__Abonner__CodeTAb__787EE5A0">
+    <End Role="Type_abonnement" Type="Self.Type_abonnement" Multiplicity="0..1" />
+    <End Role="Abonner" Type="Self.Abonner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_abonnement">
+        <PropertyRef Name="CodeTAb" />
+      </Principal>
+      <Dependent Role="Abonner">
+        <PropertyRef Name="CodeTAb" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Abonner__NumA__797309D9">
+    <End Role="Adherent" Type="Self.Adherent" Multiplicity="1" />
+    <End Role="Abonner" Type="Self.Abonner" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Adherent">
+        <PropertyRef Name="NumA" />
+      </Principal>
+      <Dependent Role="Abonner">
+        <PropertyRef Name="NumA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Activite__CodeTA__59FA5E80">
+    <End Role="Type_Activite" Type="Self.Type_Activite" Multiplicity="0..1" />
+    <End Role="Activite" Type="Self.Activite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Activite">
+        <PropertyRef Name="CodeTAc" />
+      </Principal>
+      <Dependent Role="Activite">
+        <PropertyRef Name="CodeTAc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Adherent__NumEnt__5165187F">
+    <End Role="Entraineur" Type="Self.Entraineur" Multiplicity="0..1" />
+    <End Role="Adherent" Type="Self.Adherent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entraineur">
+        <PropertyRef Name="NumE" />
+      </Principal>
+      <Dependent Role="Adherent">
+        <PropertyRef Name="NumEntr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Adherent__NumSl__52593CB8">
+    <End Role="Salle" Type="Self.Salle" Multiplicity="0..1" />
+    <End Role="Adherent" Type="Self.Adherent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salle">
+        <PropertyRef Name="NumS" />
+      </Principal>
+      <Dependent Role="Adherent">
+        <PropertyRef Name="NumSl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Entraineu__Numsl__4E88ABD4">
+    <End Role="Salle" Type="Self.Salle" Multiplicity="0..1" />
+    <End Role="Entraineur" Type="Self.Entraineur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salle">
+        <PropertyRef Name="NumS" />
+      </Principal>
+      <Dependent Role="Entraineur">
+        <PropertyRef Name="Numsle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Login___NumA__71D1E811">
+    <End Role="Adherent" Type="Self.Adherent" Multiplicity="1" />
+    <End Role="Login_" Type="Self.Login_" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Adherent">
+        <PropertyRef Name="NumA" />
+      </Principal>
+      <Dependent Role="Login_">
+        <PropertyRef Name="NumA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Planifier__CodeA__75A278F5">
+    <End Role="Activite" Type="Self.Activite" Multiplicity="1" />
+    <End Role="Planifier" Type="Self.Planifier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activite">
+        <PropertyRef Name="CodeAct" />
+      </Principal>
+      <Dependent Role="Planifier">
+        <PropertyRef Name="CodeAct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Planifier__NumS__74AE54BC">
+    <End Role="Salle" Type="Self.Salle" Multiplicity="1" />
+    <End Role="Planifier" Type="Self.Planifier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salle">
+        <PropertyRef Name="NumS" />
+      </Principal>
+      <Dependent Role="Planifier">
+        <PropertyRef Name="NumS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="gestion_clubCModelStoreContainer">
+    <EntitySet Name="Abonner" EntityType="Self.Abonner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Activite" EntityType="Self.Activite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Adherent" EntityType="Self.Adherent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Entraineur" EntityType="Self.Entraineur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login_" EntityType="Self.Login_" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Planifier" EntityType="Self.Planifier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salle" EntityType="Self.Salle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type_abonnement" EntityType="Self.Type_abonnement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type_Activite" EntityType="Self.Type_Activite" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Abonner__CodeTAb__787EE5A0" Association="Self.FK__Abonner__CodeTAb__787EE5A0">
+      <End Role="Type_abonnement" EntitySet="Type_abonnement" />
+      <End Role="Abonner" EntitySet="Abonner" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Abonner__NumA__797309D9" Association="Self.FK__Abonner__NumA__797309D9">
+      <End Role="Adherent" EntitySet="Adherent" />
+      <End Role="Abonner" EntitySet="Abonner" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Activite__CodeTA__59FA5E80" Association="Self.FK__Activite__CodeTA__59FA5E80">
+      <End Role="Type_Activite" EntitySet="Type_Activite" />
+      <End Role="Activite" EntitySet="Activite" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Adherent__NumEnt__5165187F" Association="Self.FK__Adherent__NumEnt__5165187F">
+      <End Role="Entraineur" EntitySet="Entraineur" />
+      <End Role="Adherent" EntitySet="Adherent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Adherent__NumSl__52593CB8" Association="Self.FK__Adherent__NumSl__52593CB8">
+      <End Role="Salle" EntitySet="Salle" />
+      <End Role="Adherent" EntitySet="Adherent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Entraineu__Numsl__4E88ABD4" Association="Self.FK__Entraineu__Numsl__4E88ABD4">
+      <End Role="Salle" EntitySet="Salle" />
+      <End Role="Entraineur" EntitySet="Entraineur" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Login___NumA__71D1E811" Association="Self.FK__Login___NumA__71D1E811">
+      <End Role="Adherent" EntitySet="Adherent" />
+      <End Role="Login_" EntitySet="Login_" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Planifier__CodeA__75A278F5" Association="Self.FK__Planifier__CodeA__75A278F5">
+      <End Role="Activite" EntitySet="Activite" />
+      <End Role="Planifier" EntitySet="Planifier" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Planifier__NumS__74AE54BC" Association="Self.FK__Planifier__NumS__74AE54BC">
+      <End Role="Salle" EntitySet="Salle" />
+      <End Role="Planifier" EntitySet="Planifier" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

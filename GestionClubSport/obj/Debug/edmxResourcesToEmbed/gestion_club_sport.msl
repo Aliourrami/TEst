@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gestion_club_sportModelStoreContainer" CdmEntityContainer="gestion_club_sportEntities2">
+    <EntitySetMapping Name="Abonners">
+      <EntityTypeMapping TypeName="gestion_club_sportModel.Abonner">
+        <MappingFragment StoreEntitySet="Abonner">
+          <ScalarProperty Name="DateD" ColumnName="DateD" />
+          <ScalarProperty Name="DateF" ColumnName="DateF" />
+          <ScalarProperty Name="CodeTAb" ColumnName="CodeTAb" />
+          <ScalarProperty Name="NumA" ColumnName="NumA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Activites">
+      <EntityTypeMapping TypeName="gestion_club_sportModel.Activite">
+        <MappingFragment StoreEntitySet="Activite">
+          <ScalarProperty Name="CodeAct" ColumnName="CodeAct" />
+          <ScalarProperty Name="LibelleAct" ColumnName="LibelleAct" />
+          <ScalarProperty Name="CodeTAc" ColumnName="CodeTAc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Adherents">
+      <EntityTypeMapping TypeName="gestion_club_sportModel.Adherent">
+        <MappingFragment StoreEntitySet="Adherent">
+          <ScalarProperty Name="NumA" ColumnName="NumA" />
+          <ScalarProperty Name="NomA" ColumnName="NomA" />
+          <ScalarProperty Name="PrenomA" ColumnName="PrenomA" />
+          <ScalarProperty Name="DateN" ColumnName="DateN" />
+          <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="VilleA" ColumnName="VilleA" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="NumEntr" ColumnName="NumEntr" />
+          <ScalarProperty Name="NumSl" ColumnName="NumSl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entraineurs">
+      <EntityTypeMapping TypeName="gestion_club_sportModel.Entraineur">
+        <MappingFragment StoreEntitySet="Entraineur">
+          <ScalarProperty Name="NumE" ColumnName="NumE" />
+          <ScalarProperty Name="NomE" ColumnName="NomE" />
+          <ScalarProperty Name="PrenomE" ColumnName="PrenomE" />
+          <ScalarProperty Name="LibelleE" ColumnName="LibelleE" />
+          <ScalarProperty Name="Numsle" ColumnName="Numsle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Login_">
+      <EntityTypeMapping TypeName="gestion_club_sportModel.Login_">
+        <MappingFragment StoreEntitySet="Login_">
+          <ScalarProperty Name="NumA" ColumnName="NumA" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planifiers">
+      <EntityTypeMapping TypeName="gestion_club_sportModel.Planifier">
+        <MappingFragment StoreEntitySet="Planifier">
+          <ScalarProperty Name="DateP" ColumnName="DateP" />
+          <ScalarProperty Name="HeurD" ColumnName="HeurD" />
+          <ScalarProperty Name="HeurF" ColumnName="HeurF" />
+          <ScalarProperty Name="NumS" ColumnName="NumS" />
+          <ScalarProperty Name="CodeAct" ColumnName="CodeAct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salles">
+      <EntityTypeMapping TypeName="gestion_club_sportModel.Salle">
+        <MappingFragment StoreEntitySet="Salle">
+          <ScalarProperty Name="NumS" ColumnName="NumS" />
+          <ScalarProperty Name="NomS" ColumnName="NomS" />
+          <ScalarProperty Name="AdresseS" ColumnName="AdresseS" />
+          <ScalarProperty Name="VilleS" ColumnName="VilleS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type_abonnement">
+      <EntityTypeMapping TypeName="gestion_club_sportModel.Type_abonnement">
+        <MappingFragment StoreEntitySet="Type_abonnement">
+          <ScalarProperty Name="CodeTAb" ColumnName="CodeTAb" />
+          <ScalarProperty Name="LibelleTAb" ColumnName="LibelleTAb" />
+          <ScalarProperty Name="DescTAb" ColumnName="DescTAb" />
+          <ScalarProperty Name="TarifTAb" ColumnName="TarifTAb" />
+          <ScalarProperty Name="DureeTAb" ColumnName="DureeTAb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type_Activite">
+      <EntityTypeMapping TypeName="gestion_club_sportModel.Type_Activite">
+        <MappingFragment StoreEntitySet="Type_Activite">
+          <ScalarProperty Name="CodeTAc" ColumnName="CodeTAc" />
+          <ScalarProperty Name="LibelleTAc" ColumnName="LibelleTAc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
